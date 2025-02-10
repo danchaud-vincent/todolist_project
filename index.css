@@ -1,9 +1,10 @@
 body {
     margin: 0;
     padding: 20px;
-    
-    
     width: 400px;
+    min-width: 300px;
+    font-family: "Roboto", serif;
+
 }
 
 .header-section{
@@ -36,8 +37,8 @@ body {
     padding: 3px 10px;
     background: black;
     color: white;
-    /* border: 1px solid black; */
-    
+    font-family: "Roboto", serif;
+    font-weight: bold;
 }
 
 
@@ -47,18 +48,22 @@ ul{
 }
 
 ul li{
-    margin: 0;
     position: relative;
+    margin: 0 0 5px 0;
     list-style-type: none;
 }
 
-#checked{
-    margin-left: 20px;
-    margin-right: 20px;
+ul li label{
+    margin-left: 10px;
 }
 
-#closed{
+.li-closed{
     position: absolute;
     top: 0;
-    right: 0;
+    right: 10px;
+    height: 20px;
+}
+
+.li-closed:hover{
+    cursor: pointer;
 }
