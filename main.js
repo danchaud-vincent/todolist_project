@@ -23,11 +23,12 @@ addBtn.addEventListener("click", function(){
 
     // get value from the input
     const taskValue = inputTaskEl.value
+    const id = myTodoList.length
     
     if (taskValue !== ""){
 
         // add the task to the todo list
-        myTodoList.push({id: myTodoList.length,value: taskValue, checked: false})
+        myTodoList.push({id: id,value: taskValue, checked: false})
 
         // add to the localStorage
         localStorage.setItem("myTodoList",JSON.stringify(myTodoList))
@@ -43,7 +44,6 @@ addBtn.addEventListener("click", function(){
 
 
 function deleteTask(id){
-
     // get the id number of the button (string) and convert it to number
     const idNumber = Number(id[id.length-1])
     
@@ -64,7 +64,6 @@ function checkTask(id){
 
     // get the elem in the document
     let checkboxEl = document.getElementById(id)
-    let labelTaskEl = document.getElementById(`label-${id}`)
 
     if (checkboxEl.checked === true){
 
@@ -94,21 +93,37 @@ function render(arr){
 
         if (arr[i].checked === true){
             inputDOM += `<li>
-                        <input type="checkbox" id="task${i}" name="task${i}" onclick="checkTask(this.id)" checked/>
-                        <label for="task${i}" id="label-task${i}" class="checked">${arr[i].value}</label>
-                        <img class="li-closed" id="delete-el${i}" src="sources/delete.png" onclick="deleteTask(this.id)">
-                    </li>`
+                            <input type="checkbox" id="task${i}" name="task${i}" checked/>
+                            <label for="task${i}" id="label-task${i}" class="checked">${arr[i].value}</label>
+                            <img class="li-closed" id="delete-el${i}" src="sources/delete.png">
+                        </li>`
         }
         else{
             inputDOM += `<li>
-                        <input type="checkbox" id="task${i}" name="task${i}" onclick="checkTask(this.id)"/>
-                        <label for="task${i}" id="label-task${i}">${arr[i].value}</label>
-                        <img class="li-closed" id="delete-el${i}" src="sources/delete.png" onclick="deleteTask(this.id)">
-                    </li>`
+                            <input type="checkbox" id="task${i}" name="task${i}" />
+                            <label for="task${i}" id="label-task${i}">${arr[i].value}</label>
+                            <img class="li-closed" id="delete-el${i}" src="sources/delete.png">
+                        </li>`
         }
         
     }
 
     // render in html
     ulEl.innerHTML = inputDOM
+
+    // add eventlistener
+    for (let i=0; i<arr.length; i++){
+        const checkbox = document.querySelector(`input[name=task${i}]`);
+        const deleteBtn = document.querySelector(`img[id=delete-el${i}]`)
+        
+        // event listener for checkbox
+        checkbox.addEventListener('change', function() {
+            checkTask(this.id)
+        });
+
+        // event listener for delete btn
+        deleteBtn.addEventListener('click', function(){
+            deleteTask(this.id)
+        })
+    }
 }
