@@ -57,6 +57,12 @@ ul li label{
     margin-left: 10px;
 }
 
+ul li label.checked{
+    margin-left: 10px;
+    text-decoration: line-through;
+}
+
+
 .li-closed{
     position: absolute;
     top: 0;

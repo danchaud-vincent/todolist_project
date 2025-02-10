@@ -70,17 +70,17 @@ function checkTask(id){
 
         // change the value of the todolist
         myTodoList[idNumber].checked = true
-
-        // add decoration
-        labelTaskEl.style.textDecoration = "line-through"
     }
     else{
         // change the value of the todolist
         myTodoList[idNumber].checked = false
-
-        // add decoration
-        labelTaskEl.style.textDecoration = "none"
     }
+
+    // set the localStorage
+    localStorage.setItem("myTodoList", JSON.stringify(myTodoList))
+
+    // render
+    render(myTodoList)
 }
 
 
@@ -91,11 +91,22 @@ function render(arr){
 
     // loop through the list
     for (let i=0; i<arr.length; i++){
-        inputDOM += `<li>
+
+        if (arr[i].checked === true){
+            inputDOM += `<li>
+                        <input type="checkbox" id="task${i}" name="task${i}" onclick="checkTask(this.id)" checked/>
+                        <label for="task${i}" id="label-task${i}" class="checked">${arr[i].value}</label>
+                        <img class="li-closed" id="delete-el${i}" src="sources/delete.png" onclick="deleteTask(this.id)">
+                    </li>`
+        }
+        else{
+            inputDOM += `<li>
                         <input type="checkbox" id="task${i}" name="task${i}" onclick="checkTask(this.id)"/>
                         <label for="task${i}" id="label-task${i}">${arr[i].value}</label>
                         <img class="li-closed" id="delete-el${i}" src="sources/delete.png" onclick="deleteTask(this.id)">
                     </li>`
+        }
+        
     }
 
     // render in html
