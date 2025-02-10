@@ -40,7 +40,25 @@ body {
     
 }
 
+
 ul{
-    list-style-type: none;
     margin-top: 20px;
+    padding: 0;
+}
+
+ul li{
+    margin: 0;
+    position: relative;
+    list-style-type: none;
+}
+
+#checked{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#closed{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
