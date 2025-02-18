@@ -1,8 +1,13 @@
-# TO-DO LIST CHROME EXTENSION
+# TODO LIST CHROME EXTENSION
 
-Small project from the "Front End developer path" course of the platform Scrimba.
+## SCRIMBA PROJECT
 
-## GOAL
+Project based on the The Frontend Developer Career Path.
+I developped a todolist google chrome extension.
 
-- Build a chrome extension in HTML, CSS, Javascript. 
-- Create a todo list app and install it in google chrome
+### TOOLS
+
+- HTML
+- CSS
+- JAVASCRIPT
+- chrome extension
